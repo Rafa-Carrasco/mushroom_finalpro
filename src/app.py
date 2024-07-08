@@ -34,17 +34,17 @@ categorical_col_final = ['cap-shape', 'gill-color', 'stem-surface', 'stem-color'
 with open('label_encoders.txt', 'r') as file:
     label_mappings = json.load(file)
 
-# # Reconstruir los LabelEncoders desde los mapeos
-# label_encoders = {}
-# for column, mapping in label_mappings.items():
-#     encoder = LabelEncoder()
-#     encoder.classes_ = mapping['classes']
-#     label_encoders[column] = encoder
+# Reconstruir los LabelEncoders desde los mapeos
+label_encoders = {}
+for column, mapping in label_mappings.items():
+    encoder = LabelEncoder()
+    encoder.classes_ = mapping['classes']
+    label_encoders[column] = encoder
 
 
 # Crear una función para obtener categorías únicas
-def get_unique_values(column):
-    return data[column].unique().tolist()
+def get_unique_values(campo):
+    return label_encoders[campo].classes_
 
 
 
@@ -73,6 +73,8 @@ season = st.sidebar.selectbox("Season", get_unique_values("season"))
 # --------------- MAIN BODY --------------------------------------
 
 st.title("Clasificador de setas según su comestibilidad")
+st.text('Intro sobre los datos : problemas iniciales')
+st.image('/images/seta1.jpg')
 if st.button("Predecir"):
    
    
@@ -89,7 +91,7 @@ if st.button("Predecir"):
     pred_class = class_dict[prediction]
     st.write("Predicción:", pred_class)
     st.success('AVISO: Aunque este modelo tiene un 98.7 % de acierto en sus predicciones, no es recomendable comer setas silvestres sin autentico conocimiento del medio ')
-
+    st.balloons()
   
     # variables numericas: cap-diameter,stem-height,stem-width,
     # variables categoricas: cap-shape,gill-color,stem-surface,stem-color,veil-color,spore-print-color,season
