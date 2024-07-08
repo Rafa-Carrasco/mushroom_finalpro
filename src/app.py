@@ -7,7 +7,7 @@ from pickle import load
 import json
 from sklearn.preprocessing import LabelEncoder
 
-st.set_page_config(page_title="MUSHROOM FINALPRO", layout="wide")
+st.set_page_config(page_title="MUSHROOM FINALPRO by Rafa Carrasco", layout="wide")
 
 # counter 
 
@@ -61,20 +61,20 @@ val3 = st.sidebar.slider("stem-width", min_value = 0.0, max_value = 1.0, step = 
 st.sidebar.header('2. Parametros cualitativos')
 
 # Crear selectboxes para cada variable categórica
-cap_shape = st.sidebar.selectbox("Cap Shape", get_unique_values("cap-shape"))
-gill_color = st.sidebar.selectbox("Gill Color", get_unique_values("gill-color"))
-stem_surface = st.sidebar.selectbox("Stem Surface", get_unique_values("stem-surface"))
-stem_color = st.sidebar.selectbox("Stem Color", get_unique_values("stem-color"))
-veil_color = st.sidebar.selectbox("Veil Color", get_unique_values("veil-color"))
-spore_print_color = st.sidebar.selectbox("Spore Print Color", get_unique_values("spore-print-color"))
-season = st.sidebar.selectbox("Season", get_unique_values("season"))
+cap_shape = st.sidebar.selectbox("Forma del sombrero", get_unique_values("cap-shape"))
+gill_color = st.sidebar.selectbox("Color de las láminas", get_unique_values("gill-color"))
+stem_surface = st.sidebar.selectbox("Superficie del pie", get_unique_values("stem-surface"))
+stem_color = st.sidebar.selectbox("Color del pie", get_unique_values("stem-color"))
+veil_color = st.sidebar.selectbox("Color del velo", get_unique_values("veil-color"))
+spore_print_color = st.sidebar.selectbox("Color de las esporas", get_unique_values("spore-print-color"))
+season = st.sidebar.selectbox("Temporada", get_unique_values("season"))
 
 
 # --------------- MAIN BODY --------------------------------------
 
 st.title("Clasificador de setas según su comestibilidad")
 st.text('Intro sobre los datos : problemas iniciales')
-st.image('/images/seta1.jpg')
+# st.image('/images/seta1.jpg')
 if st.button("Predecir"):
    
    
@@ -91,7 +91,7 @@ if st.button("Predecir"):
     pred_class = class_dict[prediction]
     st.write("Predicción:", pred_class)
     st.success('AVISO: Aunque este modelo tiene un 98.7 % de acierto en sus predicciones, no es recomendable comer setas silvestres sin autentico conocimiento del medio ')
-    st.balloons()
+    # st.balloons()
   
     # variables numericas: cap-diameter,stem-height,stem-width,
     # variables categoricas: cap-shape,gill-color,stem-surface,stem-color,veil-color,spore-print-color,season
