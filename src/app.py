@@ -78,8 +78,27 @@ season_enc = label_encoders['season'].transform([season])[0]
 # --------------- MAIN BODY --------------------------------------
 
 st.title("Clasificador de setas")
-st.text('Intro sobre los datos : problemas iniciales')
-# st.image('/images/seta1.jpg')
+st.image('./images/seta1.jpg')
+tab1, tab2, tab3, tab4 = st.tabs(["Tab 1", "Tab2", "Tab 3", "Tab 4"])
+tab1.write("1. Sobre los datos : problemas iniciales")
+tab2.write("2. Graficos simples y descubrimientos sobre el EDA")
+tab3.write("3. Modelos de Machine Learning utilizados")
+tab3.write("Los bosques aleatorios (Random Forest) son un poderoso modelo de machine learning que puede manejar tareas tanto de clasificación como de regresión. Funcionan mediante la combinación de múltiples árboles de decisión para mejorar la precisión y controlar el sobreajuste.")
+
+
+tab4.write("4. Reflexiones y dificultades")
+tab4.write("La reflexion despues de un proyecto es siempre muy enriquecedora y aporta enormemente al aprendizaje")
+tab4.write("1. Importancia del dominio del problema: Trabajar con datos relacionados con la alimentación y la salud pública requiere un entendimiento profundo del dominio. Es crucial asegurarse de tener información precisa y actualizada sobre las características de las setas y los riesgos asociados.")
+tab4.write("2. Preprocesamiento de datos: En este proyecto, el preprocesamiento de datos juega un papel crucial, especialmente en la limpieza de datos y la codificación de variables categóricas. Asegurarse de que los datos estén correctamente preparados y que las transformaciones como el encoding se realicen de manera adecuada es fundamental para el rendimiento del modelo.")
+tab4.write("3. Selección y ajuste de modelo: Elegir el modelo adecuado y ajustar sus hiperparámetros son pasos críticos en cualquier proyecto de aprendizaje automático. En tu caso, el uso de un árbol de decisión es una opción válida, pero considerar otros modelos como Random Forests o Support Vector Machines podría ser beneficioso dependiendo de la complejidad y distribución de los datos.")
+tab4.write("4. Interpretación de resultados: Interpretar los resultados del modelo es clave para entender su eficacia y posibles áreas de mejora. Esto incluye analizar métricas de rendimiento como precisión, recall y la matriz de confusión, así como explorar errores comunes cometidos por el modelo.")
+tab4.write("5. Ética y responsabilidad: Dado que este modelo puede tener implicaciones directas en la salud y seguridad de las personas, es fundamental abordar cuestiones éticas y de responsabilidad. Esto incluye la transparencia en la interpretación de resultados, así como la educación sobre las limitaciones del modelo y la importancia de la consulta con expertos en setas antes de tomar decisiones basadas en predicciones.")
+tab4.write("6. Mejoras futuras: Siempre hay espacio para mejorar un proyecto. Podrías considerar la expansión del conjunto de datos, explorar técnicas más avanzadas de modelado como el ensamblaje de modelos o incluso aplicar técnicas de explicabilidad del modelo para entender mejor las decisiones del mismo.")
+tab4.write("En resumen, trabajar en un proyecto como este no solo implica desarrollar habilidades técnicas en aprendizaje automático, sino también ser consciente del contexto y las implicaciones prácticas de los resultados.")
+
+# st.image('./images/seta2.jpg')
+# st.image('./images/seta3.jpg')
+
 if st.button("Predecir"):
   
     # prediction = str(model.predict([[cap_d, stem_h, stem_w, cap_shape, gill_color, stem_surface, stem_color, veil_color, spore_print_color, season ]])[0])  
