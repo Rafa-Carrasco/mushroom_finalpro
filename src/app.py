@@ -29,8 +29,8 @@ class_dict = {
 
 data = pd.read_csv('../data/processed/test_data.csv') 
 
-# Leer los mapeos desde el archivo .txt
-with open('label_encoders.txt', 'r') as file:
+# Leer los mapeos desde el archivo .json
+with open('label_encoders.json', 'r') as file:
     label_mappings = json.load(file)
 
 # Reconstruir los LabelEncoders desde los mapeos
