@@ -28,7 +28,6 @@ class_dict = {
 # cargar data original para sacar categorias de variables
 
 data = pd.read_csv('../data/processed/test_data.csv') 
-categorical_col_final = ['cap-shape', 'gill-color', 'stem-surface', 'stem-color', 'veil-color','spore-print-color', 'season']
 
 # Leer los mapeos desde el archivo .txt
 with open('label_encoders.txt', 'r') as file:
@@ -54,9 +53,9 @@ def get_unique_values(campo):
 st.sidebar.title("Opciones")
 st.sidebar.header('1. Parametros cuantitativos')
 
-val1 = st.sidebar.slider("cap-diameter", min_value = 0.0, max_value = 1.0, step = 0.1)
-val2 = st.sidebar.slider("stem-height", min_value = 0.0, max_value = 1.0, step = 0.1)
-val3 = st.sidebar.slider("stem-width", min_value = 0.0, max_value = 1.0, step = 0.1)
+cap_d = st.sidebar.slider("Diametro del sombrero (cm)", min_value = 0.38, max_value = 62.9, step = 1.0)
+stem_h = st.sidebar.slider("Altura del pie (cm)", min_value = 0.0, max_value = 33.9, step = 1.0)
+stem_w = st.sidebar.slider("Ancho del pie (mm)", min_value = 10.0, max_value = 100.0, step = 1.0)
 
 st.sidebar.header('2. Parametros cualitativos')
 
@@ -79,7 +78,7 @@ if st.button("Predecir"):
    
    
     # # Transformar las entradas del usuario utilizando los LabelEncoders
-    # cap_shape_enc = label_encoders['cap-shape'].transform([cap_shape])[0]
+    # cap_shape = get_unique_values("cap-shape")
     # gill_color_enc = label_encoders['gill-color'].transform([gill_color])[0]
     # stem_surface_enc = label_encoders['stem-surface'].transform([stem_surface])[0]
     # stem_color_enc = label_encoders['stem-color'].transform([stem_color])[0]
@@ -87,7 +86,7 @@ if st.button("Predecir"):
     # spore_print_color_enc = label_encoders['spore-print-color'].transform([spore_print_color])[0]
     # season_enc = label_encoders['season'].transform([season])[0]
     # prediction = str(model.predict([[val1, val2, val3, cap_shape_enc, gill_color_enc, stem_surface_enc, stem_color_enc, veil_color_enc, spore_print_color_enc, season_enc]])[0])
-    prediction = str(model.predict([[val1, val2, val3, cap_shape, gill_color, stem_surface, stem_color, veil_color, spore_print_color, season ]])[0])
+    prediction = str(model.predict([[cap_d, stem_h, stem_w, cap_shape, gill_color, stem_surface, stem_color, veil_color, spore_print_color, season ]])[0])
     pred_class = class_dict[prediction]
     st.write("Predicción:", pred_class)
     st.success('AVISO: Aunque este modelo tiene un 98.7 % de acierto en sus predicciones, no es recomendable comer setas silvestres sin autentico conocimiento del medio ')
@@ -95,3 +94,4 @@ if st.button("Predecir"):
   
     # variables numericas: cap-diameter,stem-height,stem-width,
     # variables categoricas: cap-shape,gill-color,stem-surface,stem-color,veil-color,spore-print-color,season
+    # categorical_col_final = ['cap-shape', 'gill-color', 'stem-surface', 'stem-color', 'veil-color','spore-print-color', 'season']
