@@ -1,1 +1,14 @@
-{"cap-shape": {"classes": ["b", "c", "f", "o", "p", "s", "x"]}, "cap-surface": {"classes": ["d", "e", "g", "h", "i", "k", "l", "q", "s", "t", "w", "y"]}, "cap-color": {"classes": ["b", "e", "g", "k", "l", "n", "o", "p", "r", "u", "w", "y"]}, "gill-attachment": {"classes": ["a", "d", "e", "f", "p", "q", "s", "x"]}, "gill-spacing": {"classes": ["c", "d", "f", "q"]}, "gill-color": {"classes": ["b", "e", "f", "g", "k", "n", "o", "p", "r", "u", "w", "y"]}, "stem-root": {"classes": ["b", "c", "f", "q", "r", "s"]}, "stem-surface": {"classes": ["f", "g", "h", "i", "k", "q", "s", "t", "y"]}, "stem-color": {"classes": ["b", "e", "f", "g", "k", "l", "n", "o", "p", "r", "u", "w", "y"]}, "veil-color": {"classes": ["e", "k", "n", "q", "u", "w", "y"]}, "spore-print-color": {"classes": ["g", "k", "n", "p", "q", "r", "u", "w"]}, "habitat": {"classes": ["d", "g", "h", "l", "m", "p", "u", "w"]}, "season": {"classes": ["a", "s", "u", "w"]}}
+{
+    "cap-shape": {"classes": ["b", "c", "f", "o", "p", "s", "x"]}, 
+    "cap-surface": {"classes": ["d", "e", "g", "h", "i", "k", "l", "q", "s", "t", "w", "y"]}, 
+    "cap-color": {"classes": ["b", "e", "g", "k", "l", "n", "o", "p", "r", "u", "w", "y"]}, 
+    "gill-attachment": {"classes": ["a", "d", "e", "f", "p", "q", "s", "x"]}, 
+    "gill-spacing": {"classes": ["c", "d", "f", "q"]}, 
+    "gill-color": {"classes": ["b", "e", "f", "g", "k", "n", "o", "p", "r", "u", "w", "y"]}, 
+    "stem-root": {"classes": ["b", "c", "f", "q", "r", "s"]}, 
+    "stem-surface": {"classes": ["f", "g", "h", "i", "k", "q", "s", "t", "y"]}, 
+    "stem-color": {"classes": ["b", "e", "f", "g", "k", "l", "n", "o", "p", "r", "u", "w", "y"]}, 
+    "veil-color": {"classes": ["e", "k", "n", "q", "u", "w", "y"]}, 
+    "spore-print-color": {"classes": ["g", "k", "n", "p", "q", "r", "u", "w"]}, 
+    "habitat": {"classes": ["d", "g", "h", "l", "m", "p", "u", "w"]}, 
+    "season": {"classes": ["a", "s", "u", "w"]}}
