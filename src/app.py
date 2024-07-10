@@ -79,21 +79,36 @@ season_enc = label_encoders['season'].transform([season])[0]
 
 st.title("Clasificador de setas")
 st.image('./images/seta1.jpg')
-tab1, tab2, tab3, tab4 = st.tabs(["Tab 1", "Tab2", "Tab 3", "Tab 4"])
+tab1, tab2, tab3, tab4 = st.tabs(["Sobre los datos", "Sobre el EDA", "Modelos de Machine Learning", "Reflexiones y dificultades"])
 tab1.write("1. Sobre los datos : problemas iniciales")
 tab2.write("2. Graficos simples y descubrimientos sobre el EDA")
+
 tab3.write("3. Modelos de Machine Learning utilizados")
-tab3.write("Los bosques aleatorios (Random Forest) son un poderoso modelo de machine learning que puede manejar tareas tanto de clasificación como de regresión. Funcionan mediante la combinación de múltiples árboles de decisión para mejorar la precisión y controlar el sobreajuste.")
+tab3.write("RANDOM FOREST")
+tab3.write("El modelo Random Forest puede manejar tareas tanto de clasificación como de regresión. Funcionan mediante la combinación de múltiples árboles de decisión para mejorar la precisión y controlar el sobreajuste.")
+tab3.write("Usar un algoritmo de árbol de decisión (Decision Tree) en un proyecto de clasificación de setas según su comestibilidad tiene varias ventajas:")
+tab3.write("DECISION TREE")
+tab3.write("1. Facilidad de interpretación y visualización: los árboles de decisión son fáciles de entender y visualizar. Las decisiones tomadas en cada nodo y las reglas resultantes son transparentes y lógicas, lo que facilita la interpretación de cómo el modelo llega a una predicción. Esta transparencia es especialmente útil en proyectos donde la explicación del modelo a usuarios no técnicos (por ejemplo, aficionados a las setas) es crucial.")
+tab3.write("2. Manejo de datos categóricos y numéricos: Los árboles de decisión pueden manejar tanto características categóricas como numéricas sin necesidad de preprocesamiento extenso (como la normalización o estandarización).Esto resulta muy practico en este proyecto, donde las características categóricas (como forma del sombrero, color de las láminas, etc.) son predominantes.")
+tab3.write("3. No requiere suposiciones sobre la distribución de los datos: A diferencia de algunos algoritmos que asumen una distribución específica de los datos (por ejemplo, la normalidad), los árboles de decisión no tienen estos requisitos. Esto los hace más flexibles y aplicables a una variedad de conjuntos de datos.")
+tab3.write("4. Manejo de los datos faltantes: Los árboles de decisión pueden manejar valores faltantes en las características. Aunque tener datos completos y limpios es ideal, los árboles de decisión pueden dividirse utilizando variables disponibles y, en algunos casos, realizar imputaciones durante el entrenamiento.")
+tab3.write("5. Identificación de interacciones entre variables: Los árboles de decisión pueden capturar interacciones complejas entre variables sin necesidad de especificarlas explícitamente. Esto es útil en la clasificación de setas, donde las interacciones entre diferentes características pueden ser importantes para determinar la comestibilidad.")
+tab3.write("6. Eficiencia computacional:Entrenar y predecir con árboles de decisión suele ser más rápido en comparación con otros algoritmos más complejos como las redes neuronales. Esto es beneficioso cuando se necesita una rápida toma de decisiones, por ejemplo, en aplicaciones móviles.")
+tab3.write("7. Poca sensibilidad a los valores atípicos: Los árboles de decisión son menos afectados por valores atípicos en comparación con algunos algoritmos de aprendizaje automático. Esto es porque los puntos de decisión están basados en maximizar la ganancia de información o la reducción de la impureza, lo que puede mitigar el impacto de valores extremos.")
+tab3.write("8. Capacidad de manejar grandes volúmenes de datos:Aunque los árboles de decisión simples pueden ser susceptibles al sobreajuste en conjuntos de datos muy grandes y variados, técnicas como la poda (pruning) y el uso de ensambles como Random Forests pueden mejorar su rendimiento y robustez.")
+tab3.write("En resumen, los árboles de decisión son una herramienta poderosa y versátil que puede ofrecer ventajas significativas en la clasificación de setas, tanto en términos de rendimiento como de interpretabilidad y facilidad de uso.")
+
+
 
 
 tab4.write("4. Reflexiones y dificultades")
-tab4.write("La reflexion despues de un proyecto es siempre muy enriquecedora y aporta enormemente al aprendizaje")
-tab4.write("1. Importancia del dominio del problema: Trabajar con datos relacionados con la alimentación y la salud pública requiere un entendimiento profundo del dominio. Es crucial asegurarse de tener información precisa y actualizada sobre las características de las setas y los riesgos asociados.")
+tab4.write("La reflexion despues de un proyecto es siempre muy enriquecedora y aporta enormemente al aprendizaje. Algunos puntos para reflexionar son:")
+tab4.write("1. Importancia del dominio del problema: Trabajar con datos relacionados con la alimentación y la salud pública requiere un entendimiento profundo del dominio. Es crucial asegurarse de tener información precisa y actualizada sobre las características de las setas y los riesgos asociados. En este caso, los datos vienen con la garantia de un equipo de investigadores de la UCI")
 tab4.write("2. Preprocesamiento de datos: En este proyecto, el preprocesamiento de datos juega un papel crucial, especialmente en la limpieza de datos y la codificación de variables categóricas. Asegurarse de que los datos estén correctamente preparados y que las transformaciones como el encoding se realicen de manera adecuada es fundamental para el rendimiento del modelo.")
 tab4.write("3. Selección y ajuste de modelo: Elegir el modelo adecuado y ajustar sus hiperparámetros son pasos críticos en cualquier proyecto de aprendizaje automático. En tu caso, el uso de un árbol de decisión es una opción válida, pero considerar otros modelos como Random Forests o Support Vector Machines podría ser beneficioso dependiendo de la complejidad y distribución de los datos.")
 tab4.write("4. Interpretación de resultados: Interpretar los resultados del modelo es clave para entender su eficacia y posibles áreas de mejora. Esto incluye analizar métricas de rendimiento como precisión, recall y la matriz de confusión, así como explorar errores comunes cometidos por el modelo.")
 tab4.write("5. Ética y responsabilidad: Dado que este modelo puede tener implicaciones directas en la salud y seguridad de las personas, es fundamental abordar cuestiones éticas y de responsabilidad. Esto incluye la transparencia en la interpretación de resultados, así como la educación sobre las limitaciones del modelo y la importancia de la consulta con expertos en setas antes de tomar decisiones basadas en predicciones.")
-tab4.write("6. Mejoras futuras: Siempre hay espacio para mejorar un proyecto. Podrías considerar la expansión del conjunto de datos, explorar técnicas más avanzadas de modelado como el ensamblaje de modelos o incluso aplicar técnicas de explicabilidad del modelo para entender mejor las decisiones del mismo.")
+tab4.write("6. Mejoras futuras: Siempre hay espacio para mejorar un proyecto. Se podría considerar la expansión del conjunto de datos, explorar técnicas más avanzadas de modelado como el ensamblaje de modelos o incluso aplicar técnicas de explicabilidad del modelo (como visualizacion de los arboles de decision, SHAP, LIME, PDP), para entender mejor las decisiones del mismo.")
 tab4.write("En resumen, trabajar en un proyecto como este no solo implica desarrollar habilidades técnicas en aprendizaje automático, sino también ser consciente del contexto y las implicaciones prácticas de los resultados.")
 
 # st.image('./images/seta2.jpg')
