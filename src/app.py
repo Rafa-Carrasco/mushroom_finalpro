@@ -5,7 +5,7 @@ from pickle import load
 import json
 from sklearn.preprocessing import LabelEncoder
 
-st.set_page_config(page_title="MUSHROOM FINALPRO by Rafa Carrasco", layout="wide")
+st.set_page_config(page_title="DATASETAS by Rafa Carrasco", layout="wide")
 
 # counter 
 
@@ -74,21 +74,20 @@ spore_print_color_enc = label_encoders['spore-print-color'].transform([spore_pri
 season_enc = label_encoders['season'].transform([season])[0]
 
 # --------------- MAIN BODY --------------------------------------
-
-st.header("Clasificador de setas")
+st.image('./images/datasetas-logo_sm.jpg')
+st.header("DATASETAS: Clasificador de setas con Machine Learning")
 st.subheader("Cómo utilizar el clasificador")
 with st.container():
         st.write("Bienvenido al clasificador de setas. Esta herramienta te ayudará a predecir si una seta es comestible o no basada en ciertas características. Por favor, sigue los siguientes pasos:")
 
-with st.container():
+with st.expander("Instruciones"):
+# with st.container():
         st.write("Paso 1: Introduce los Parámetros Cuantitativos: En el lado izquierdo de la pantalla, encontrarás una barra lateral con las opciones de entrada. Mueve el deslizador de izquierda a derecha para ajustar los valores.")
-with st.container():
         st.write("Paso 2: Introduce los Parámetros Cualitativos: Debajo de los deslizadores, verás varias cajas de selección (select boxes) para diferentes características cualitativas de la seta. Selecciona una opción para cada característica.")
-with st.container():
         st.write("Paso 3: Realiza la Predicción: Una vez que hayas ingresado todos los parámetros, haz clic en el botón 'Predecir' que se encuentra en el centro de la página. La aplicación procesará la información y mostrará el resultado de la predicción en la pantalla.")
-with st.container():
         st.write("Paso 4: Interpreta el Resultado: La aplicación te mostrará si la seta es 'Comestible' o 'No Comestible' basado en los parámetros que elegiste. Ten en cuenta el aviso.") 
-with st.container(border=True):
+
+with st.container(border=True, color:):
         st.write("AVISO IMPORTANTE: Esta herramienta es educativa y no debe ser utilizada como única fuente para determinar la comestibilidad de setas. Siempre consulta a un experto en micología antes de consumir setas silvestres.")
 with st.container():
         st.write("Esperamos que esta guía te sea de ayuda. ¡Disfruta usando el clasificador de setas!")
@@ -150,7 +149,7 @@ tab6.write("5. Ética y responsabilidad: Dado que este modelo puede tener implic
 tab6.write("6. Mejoras futuras: Siempre hay espacio para mejorar un proyecto. Se podría considerar la expansión del conjunto de datos, explorar técnicas más avanzadas de modelado como el ensamblaje de modelos o incluso aplicar técnicas de explicabilidad del modelo (como visualizacion de los arboles de decision, SHAP, LIME, PDP), para entender mejor las decisiones del mismo.")
 tab6.write("En resumen, trabajar en un proyecto como este no solo implica desarrollar habilidades técnicas en aprendizaje automático, sino también ser consciente del contexto y las implicaciones prácticas de los resultados.")
 
-# st.image('./images/seta2.jpg')
+
 # st.image('./images/seta3.jpg')
 
 
