@@ -16,8 +16,8 @@ st.write(f"This page has run {st.session_state.counter} times.")
 # st.button("Run it again")
 
 # cargar el modelo
-
-model = load(open("../models/decision_tree_classifier_default_42.sav", "rb"))
+# model = load(open("../models/decision_tree_classifier_default_42.sav", "rb"))
+model = load(open("../models/randomforest_classifier_mejores parametros_42.sav", "rb"))
 class_dict = {
     "0": "No Comestible",
     "1": "comestible"
@@ -39,11 +39,9 @@ for column, mapping in label_mappings.items():
     # encoder.classes_ = mapping['classes']
     label_encoders[column] = encoder
 
-
 # Crear una función para obtener categorías únicas
 def get_unique_values(campo):
     return label_encoders[campo].classes_
-
 
 
 # ---------------- SIDEBAR -----------------
