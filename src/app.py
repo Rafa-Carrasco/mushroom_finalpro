@@ -74,9 +74,9 @@ spore_print_color_enc = label_encoders['spore-print-color'].transform([spore_pri
 season_enc = label_encoders['season'].transform([season])[0]
 
 # --------------- MAIN BODY --------------------------------------
-st.image('./images/datasetas-logo_sm.jpg')
+
 st.header("DATASETAS: Clasificador de setas con Machine Learning")
-st.subheader("Cómo utilizar el clasificador")
+st.image('./images/datasetas-logo_sm.jpg')
 with st.container():
         st.write("Bienvenido al clasificador de setas. Esta herramienta te ayudará a predecir si una seta es comestible o no basada en ciertas características. Por favor, sigue los siguientes pasos:")
 
@@ -87,7 +87,7 @@ with st.expander("Instruciones"):
         st.write("Paso 3: Realiza la Predicción: Una vez que hayas ingresado todos los parámetros, haz clic en el botón 'Predecir' que se encuentra en el centro de la página. La aplicación procesará la información y mostrará el resultado de la predicción en la pantalla.")
         st.write("Paso 4: Interpreta el Resultado: La aplicación te mostrará si la seta es 'Comestible' o 'No Comestible' basado en los parámetros que elegiste. Ten en cuenta el aviso.") 
 
-with st.container(border=True, color:):
+with st.container(border=True):
         st.write("AVISO IMPORTANTE: Esta herramienta es educativa y no debe ser utilizada como única fuente para determinar la comestibilidad de setas. Siempre consulta a un experto en micología antes de consumir setas silvestres.")
 with st.container():
         st.write("Esperamos que esta guía te sea de ayuda. ¡Disfruta usando el clasificador de setas!")
