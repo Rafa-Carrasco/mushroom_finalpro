@@ -1,10 +1,10 @@
 [theme]
 # Configuración del tema (Dark/Light)
-
+base = ""
 
 # Colores del tema
 primaryColor = "#1f77b4"
-backgroundColor = "#0e1117"
+backgroundColor = "#ffff00"
 secondaryBackgroundColor = "#00ff30"
 textColor = "#ffff00"
 font = "sans serif"

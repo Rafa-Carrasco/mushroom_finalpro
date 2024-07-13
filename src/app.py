@@ -79,7 +79,7 @@ st.header("DATASETAS: Clasificador de setas con Machine Learning")
 col1, col2 = st.columns([2,2])
 
 with col1:
-        st.image('./images/datasetas-logo_sm.jpg', width=400)
+        st.image('./images/datasetas-logo_sm.jpg', width=400, use_column_width = 'auto')
 
 with col2:
         st.write("Bienvenido al clasificador de setas. Esta herramienta te ayudará a predecir si una seta es comestible o no basada en ciertas características. Por favor, sigue los siguientes pasos:")
@@ -108,50 +108,78 @@ if st.button("Predecir"):
 
 # -------------------------------TABS --------------------------------
   
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Sobre los datos", "Sobre el EDA", "Modelo 1: Naive Bayes", "Modelo 2: Decision Tree", "Modelo 3: RF", "Reflexiones y dificultades"])
+tab1, tab2, tab3 = st.tabs(["Sobre los datos y el EDA", "Modelos de ML", "Reflexiones y dificultades"])
 
-tab1.write("1. Sobre los datos : problemas iniciales")
+tab1.write("1. Sobre los datos: problemas iniciales")
+tab1.write('''
+ - Variabilidad: Todas las variables muestran una variabilidad considerable, con desviaciones estándar altas en comparación con sus medias. 
+           Esto sugiere que las características físicas de los hongos en el conjunto de datos varían ampliamente.
+ - Valores Extremos: La presencia de valores mínimos de 0 en stem-height y stem-width podría indicar errores en los datos o valores faltantes. 
+ - Distribución Asimétrica: Las diferencias significativas entre las medianas y las medias, especialmente en stem-width, 
+           sugieren que la distribución de los datos podría tener valores atípicos.
+Este análisis descriptivo nos da una base para entender la distribución y las características de las variables en el dataset de setas. 
+           Es un primer paso crucial antes de proceder con análisis más complejos o modelos predictivos.           
+''')
+tab1.write('''
+ - Algunas variables tienen valor claramente predominante: habitat, ring-type, veil-color, y algo menos en otras como cap-color
+           Las 3 variables numericas tienen un numero importante de outliers. 
+           Dado el caracter de los datos y a su contexto de alimentación y salud pública  (aunque haya muy poco valores atipicos, 
+           estos podrian ser determinantes a la hora de su comestibilidad) y el alto numero de variables que participan, 
+           parece lo mas prudente mantener los outliers
+   ''')
+tab1.write('''
+Conclusion clave sobre los datos:  
 
-tab2.write("2. Graficos simples y descubrimientos sobre el EDA")
+ - Ninguna de las caracteristicas por si misma parece determinante de la clase, 
+           pero algunos valores parecen ser mayor factor de determinación que otros, debido al mayor numero de casos. 
+           Ejemplo: ring-type=f; habitat=t; veil-color=w; cap-color=n;  
+ - Los datos apuntan a que la determinación procede de combinaciones de distintas variables con ciertos valores. 
+           Por ejemplo; la combinación: spore-print-color=k/n + cap-surface=t + stem-surface=y tiene una alta probabilidad de ser venenosa (p)
+           ''')
 
-
-tab3.write("MODELO 1: NAIVE BAYES")
-
-
-tab4.write("MODELO 2: DECISION TREE")
-tab4.write("Usar un algoritmo de árbol de decisión (Decision Tree) en un proyecto de clasificación de setas tiene varias ventajas:")
-tab4.write("1. Facilidad de interpretación y visualización: son fáciles de entender y visualizar. Las decisiones tomadas en cada nodo y las reglas resultantes son transparentes y lógicas, lo que facilita la interpretación de cómo el modelo llega a una predicción. Esto es especialmente útil en proyectos donde la explicación del modelo a usuarios no técnicos (por ejemplo, aficionados a las setas) es crucial.")
-tab4.write("2. Manejo de datos categóricos y numéricos: Los DT pueden manejar tanto características categóricas como numéricas sin necesidad de preprocesamiento extenso. Esto resulta muy practico en este proyecto, donde las características categóricas (como forma del sombrero, color de las láminas, etc.) son predominantes.")
-tab4.write("3. No requiere suposiciones sobre la distribución de los datos: A diferencia de algunos algoritmos que asumen una distribución específica de los datos, los DT no tienen estos requisitos. Esto los hace más flexibles y aplicables a una variedad de conjuntos de datos.")
-tab4.write("4. Manejo de los datos faltantes: Los DT pueden manejar valores faltantes en las características. Aunque tener datos completos y limpios es ideal, los DT pueden dividirse utilizando variables disponibles durante el entrenamiento.")
-tab4.write("5. Identificación de interacciones entre variables: Los DT pueden capturar interacciones complejas entre variables sin necesidad de especificarlas explícitamente. Esto es útil en la clasificación de setas, donde hemos visto que las interacciones entre diferentes características son claves para determinar la comestibilidad.")
-tab4.write("6. Eficiencia computacional: Entrenar y predecir con DT suele ser más rápido en comparación con otros algoritmos más complejos como las redes neuronales. Esto tiene muchas ventajas en aplicaciones móviles, por ejemplo.")
-tab4.write("7. Menor sensibilidad a los valores atípicos: Los DT son menos afectados por valores atípicos en comparación con algunos algoritmos de aprendizaje automático.")
-tab4.write("En resumen, los DT son una herramienta poderosa y versátil que puede ofrecer ventajas significativas en la clasificación de setas, tanto en términos de rendimiento como de interpretabilidad y facilidad de uso.")
-
-tab5.write("MODELO 3: RANDOM FOREST")
-tab5.write("El modelo Random Forest (RF) puede manejar tareas tanto de clasificación como de regresión. Funcionan mediante la combinación de múltiples DT para mejorar la precisión y controlar el sobreajuste. Utilizarlo en este proyecto ofrece varias ventajas significativas:")
-tab5.write("1. Mejora de la Precisión: Al promediar las predicciones de muchos árboles, RF tiende a ser más preciso que un solo árbol de decisión.")
-tab5.write("2. Resistencia contra el Sobreajuste: A diferencia de los árboles de decisión simples, que pueden ser propensos a sobreajustarse a los datos de entrenamiento, RF reduce este riesgo al crear árboles a partir de diferentes subconjuntos de datos y promediar sus predicciones. Esto mejora la capacidad general del modelo para generalizar en datos nuevos.")
-tab5.write("3. Manejo de Datos Perdidos: RF puede manejar valores faltantes de manera efectiva. Durante la construcción de árboles, puede estimar valores faltantes y mantener el rendimiento del modelo incluso cuando los datos de entrada no están completos.")
-tab5.write("4. Importancia de las Características: RF puede proporcionar una medida de importancia para cada característica del conjunto de datos. Esto es particularmente útil para identificar qué variables tienen el mayor impacto en la predicción de la comestibilidad de las setas, lo cual puede ser útil para la interpretación del modelo y para futuros esfuerzos de recopilación de datos.")
-tab5.write("5. Versatilidad y Flexibilidad: RF puede ser utilizado tanto para tareas de clasificación como de regresión. En el contexto de este proyecto, se utiliza para la clasificación, pero su flexibilidad es una ventaja en caso de que el proyecto evolucione y requiera diferentes tipos de análisis.")
-tab5.write("6. Resistencia a los Valores Atípicos: Debido a que RF promedia los resultados de muchos árboles, es menos sensible a los valores atípicos que los modelos de árboles de decisión únicos. Esto puede resultar en predicciones más estables y robustas.")
-tab5.write("7. Facilidad de Uso: Una vez configurado, RF requiere relativamente pocos parámetros para ajustar en comparación con otros modelos complejos, lo que facilita su implementación y optimización.")
-tab5.write("8. Eficiencia Computacional: Aunque construir muchos árboles puede parecer computacionalmente costoso, RF puede ser paralelizado fácilmente, permitiendo que múltiples árboles sean entrenados simultáneamente, lo que mejora la eficiencia computacional.")
-tab5.write("9. Interpretabilidad: Si bien RF no es tan interpretable como un solo árbol de decisión, aún proporciona un buen equilibrio entre interpretabilidad y rendimiento. Las importancias de características y las estructuras de árboles individuales pueden ser inspeccionadas para obtener información sobre el modelo.")
-tab5.write("En resumen, RF ofrece un equilibrio robusto entre precisión, manejo de datos faltantes, resistencia al sobreajuste y facilidad de uso, lo que lo convierte en una opción excelente para la clasificación de setas.")
+tab1.write("2. Graficos simples y descubrimientos sobre el EDA")
 
 
-tab6.write("4. Reflexiones y dificultades")
-tab6.write("La reflexion despues de un proyecto es siempre muy enriquecedora. La metacognición (análisis del proceso de aprendizaje) es un proceso clave que aporta enormemente al aprendizaje. Algunos puntos para reflexionar son:")
-tab6.write("1. Importancia del dominio del problema: Trabajar con datos relacionados con la alimentación y la salud pública requiere un entendimiento profundo del dominio. Es crucial asegurarse de tener información precisa y actualizada sobre las características de las setas y los riesgos asociados. En este caso, los datos vienen con la garantia de un equipo de investigadores de la UCI")
-tab6.write("2. Preprocesamiento de datos: En este proyecto, el preprocesamiento de datos juega un papel crucial, especialmente en la limpieza de datos y la codificación de variables categóricas. Asegurarse de que los datos estén correctamente preparados y que las transformaciones como el encoding se realicen de manera adecuada es fundamental para el rendimiento del modelo.")
-tab6.write("3. Selección y ajuste de modelo: Elegir el modelo adecuado y ajustar sus hiperparámetros son pasos críticos en cualquier proyecto de aprendizaje automático. En este proyecto, Naibe Bayes parecia la mejor solucion pero los reultados de la prueba han sido contundentes en su contra. El uso de un árbol de decisión ha sido una opción válida, pero comparar el resultado con otros modelos como RFs ha sido esencial para confirmar las validez de sus predicciones")
-tab6.write("4. Interpretación de resultados: Interpretar los resultados del modelo es clave para entender su eficacia y posibles áreas de mejora. Esto incluye analizar métricas de rendimiento como precisión, recall y la matriz de confusión, así como explorar errores comunes cometidos por el modelo.")
-tab6.write("5. Ética y responsabilidad: Dado que este modelo puede tener implicaciones directas en la salud y seguridad de las personas, es fundamental abordar cuestiones éticas y de responsabilidad. Esto incluye la transparencia en la interpretación de resultados, así como la educación sobre las limitaciones del modelo y la importancia de la consulta con expertos en setas antes de tomar decisiones basadas en predicciones.")
-tab6.write("6. Mejoras futuras: Siempre hay espacio para mejorar un proyecto. Se podría considerar la expansión del conjunto de datos, explorar técnicas más avanzadas de modelado como el ensamblaje de modelos o incluso aplicar técnicas de explicabilidad del modelo (como visualizacion de los arboles de decision, SHAP, LIME, PDP), para entender mejor las decisiones del mismo.")
-tab6.write("En resumen, trabajar en un proyecto como este no solo implica desarrollar habilidades técnicas en aprendizaje automático, sino también ser consciente del contexto y las implicaciones prácticas de los resultados.")
+tab2.write("MODELOS DE MACHINE LEARNING")
+tab2.write('''
+           Como comentamos al principio, nuestro sistema de clasificación estaría basado en los atributos de las setas visibles a simple vista.
+Elegir el modelo adecuado y ajustar sus hiper parámetros son pasos críticos en cualquier proyecto de aprendizaje automático. 
+Después del EDA sabemos que nuestros datos tienen distribuciones asimétricas, con valores atípicos y extremos, mucha variabilidad entre atributos, 
+           y muchos valores faltantes. Esto nos sirve como indicación para saber qué algoritmo puede dar los resultados más óptimos. 
+En este proyecto, varios algoritmos de ML han sido testados. 
+El uso de un árbol de decisión ha sido correcto como primera opción, pero comparar y mejorar el resultado 
+           con otros modelos como RFs y KNN ha sido esencial para confirmar las validez de sus predicciones
+        ''')
+tab2.write(''' 
+        MODELO 1: DECISION TREE: organiza decisiones y sus posibles consecuencias en una estructura de árbol. 
+           Cada nodo interno representa una prueba en una característica (por ejemplo, si una característica es menor o mayor que un valor específico), 
+           cada rama representa el resultado de la prueba, y cada nodo hoja representa una etiqueta de clase (para clasificación) o un valor continuo (para regresión). 
+           El camino desde la raíz del árbol hasta una hoja representa una serie de decisiones que conducen a una predicción.
+           ''')
+with tab2:
+   st.image("./images/output_dt.png", use_column_width = 'auto')
+tab2.write(''' 
+           MODELO 2: RANDOM FOREST: Se basa en la construcción de múltiples árboles de decisión durante el entrenamiento y su combinación para mejorar la precisión 
+           y controlar el sobreajuste. Cada árbol en el bosque se entrena con una muestra diferente del conjunto de datos y se utiliza un subconjunto aleatorio 
+           de características en cada división del árbol. La predicción final del modelo se obtiene tomando la mayoría de los votos (en el caso de la clasificación). 
+            ''')        
+with tab2:
+   st.image("./images/output_.png", use_column_width = 'auto')
+tab2.write(''' 
+           MODELO 3: K-NEAREST NEIGHBOURS: el algoritmo asigna una clase a un dato nuevo basándose en la clase más frecuente 
+           entre sus k vecinos más cercanos en el espacio de características, donde k es un número entero predefinido.
+        ''')
+
+
+tab3.write("3. Reflexiones y dificultades")
+tab3.write("La reflexion despues de un proyecto es siempre muy enriquecedora. La metacognición (análisis del proceso de aprendizaje) es un proceso clave que aporta enormemente al aprendizaje. Algunos puntos para reflexionar son:")
+tab3.write("1. Importancia del dominio del problema: Trabajar con datos relacionados con la alimentación y la salud pública requiere un entendimiento profundo del dominio. Es crucial asegurarse de tener información precisa y actualizada sobre las características de las setas y los riesgos asociados. En este caso, los datos vienen con la garantia de un equipo de investigadores de la UCI")
+tab3.write("2. Preprocesamiento de datos: En este proyecto, el preprocesamiento de datos juega un papel crucial, especialmente en la limpieza de datos y la codificación de variables categóricas. Asegurarse de que los datos estén correctamente preparados y que las transformaciones como el encoding se realicen de manera adecuada es fundamental para el rendimiento del modelo.")
+tab3.write("3. Selección y ajuste de modelo: Elegir el modelo adecuado y ajustar sus hiperparámetros son pasos críticos en cualquier proyecto de aprendizaje automático. En este proyecto, Naibe Bayes parecia la mejor solucion pero los reultados de la prueba han sido contundentes en su contra. El uso de un árbol de decisión ha sido una opción válida, pero comparar el resultado con otros modelos como RFs ha sido esencial para confirmar las validez de sus predicciones")
+tab3.write("4. Interpretación de resultados: Interpretar los resultados del modelo es clave para entender su eficacia y posibles áreas de mejora. Esto incluye analizar métricas de rendimiento como precisión, recall y la matriz de confusión, así como explorar errores comunes cometidos por el modelo.")
+tab3.write("5. Ética y responsabilidad: Dado que este modelo puede tener implicaciones directas en la salud y seguridad de las personas, es fundamental abordar cuestiones éticas y de responsabilidad. Esto incluye la transparencia en la interpretación de resultados, así como la educación sobre las limitaciones del modelo y la importancia de la consulta con expertos en setas antes de tomar decisiones basadas en predicciones.")
+tab3.write("6. Mejoras futuras: Siempre hay espacio para mejorar un proyecto. Se podría considerar la expansión del conjunto de datos, explorar técnicas más avanzadas de modelado como el ensamblaje de modelos o incluso aplicar técnicas de explicabilidad del modelo (como visualizacion de los arboles de decision, SHAP, LIME, PDP), para entender mejor las decisiones del mismo.")
+tab3.write("En resumen, trabajar en un proyecto como este no solo implica desarrollar habilidades técnicas en aprendizaje automático, sino también ser consciente del contexto y las implicaciones prácticas de los resultados.")
 
 
 # st.image('./images/seta3.jpg')
