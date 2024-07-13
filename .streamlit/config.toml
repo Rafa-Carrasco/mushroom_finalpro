@@ -4,7 +4,7 @@ base = "light"
 
 # Colores del tema
 primaryColor = "#1f77b4"
-backgroundColor = "#ffff00"
+backgroundColor = "#9BADA9"
 secondaryBackgroundColor = "#00ff30"
 textColor = "#ffff00"
 font = "sans serif"
