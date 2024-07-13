@@ -85,7 +85,7 @@ with col1:
 with col2:
         st.write("Bienvenido al clasificador de setas. Esta herramienta te ayudará a predecir si una seta es comestible o no basada en ciertas características. Por favor, sigue los siguientes pasos:")
 
-with st.expander("Instruciones"):
+with st.expander("Instrucciones"):
         st.write("Paso 1: Introduce los Parámetros Cuantitativos: En el lado izquierdo de la pantalla, encontrarás una barra lateral con las opciones de entrada. Mueve el deslizador de izquierda a derecha para ajustar los valores.")
         st.write("Paso 2: Introduce los Parámetros Cualitativos: Debajo de los deslizadores, verás varias cajas de selección (select boxes) para diferentes características cualitativas de la seta. Selecciona una opción para cada característica.")
         st.write("Paso 3: Realiza la Predicción: Una vez que hayas ingresado todos los parámetros, haz clic en el botón 'Predecir' que se encuentra en el centro de la página. La aplicación procesará la información y mostrará el resultado de la predicción en la pantalla.")
@@ -95,9 +95,11 @@ with st.container(border=True):
         st.write("AVISO IMPORTANTE: Esta herramienta es educativa y no debe ser utilizada como única fuente para determinar la comestibilidad de setas. Siempre consulta a un experto en micología antes de consumir setas silvestres.")
 with st.container():
         st.write("Esperamos que esta guía te sea de ayuda. ¡Disfruta usando el clasificador de setas!")
-st.divider()
 
+
+st.write("Insertar todos los parametros y pulsar el boton para hacer la predicción")
 if st.button("Predecir"):
+
   
     prediction = str(model.predict([[cap_d, stem_h, stem_w, cap_shape_enc, gill_color_enc, stem_surface_enc, stem_color_enc, veil_color_enc, spore_print_color_enc, season_enc ]])[0])
     pred_class = class_dict[prediction]
@@ -105,7 +107,7 @@ if st.button("Predecir"):
     st.success('AVISO: Aunque este modelo tiene un 98.7 % de acierto en sus predicciones, no es recomendable comer setas silvestres sin autentico conocimiento del medio ')
     # st.balloons()
 
-
+st.divider()
 
 # -------------------------------TABS --------------------------------
   
