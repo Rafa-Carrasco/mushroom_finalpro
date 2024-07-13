@@ -1,6 +1,6 @@
 [theme]
 # Configuración del tema (Dark/Light)
-base = ""
+base = "light"
 
 # Colores del tema
 primaryColor = "#1f77b4"

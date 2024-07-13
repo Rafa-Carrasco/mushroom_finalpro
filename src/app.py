@@ -17,7 +17,8 @@ st.write(f"This page has run {st.session_state.counter} times.")
 
 # cargar el modelo
 # model = load(open("../models/decision_tree_classifier_default_42.sav", "rb"))
-model = load(open("../models/randomforest_classifier_mejores parametros_42.sav", "rb"))
+# model = load(open("../models/randomforest_classifier_mejores parametros_42.sav", "rb"))
+model = load(open("../models/KNN_default_42.sav", "rb"))
 class_dict = {
     "0": "No Comestible",
     "1": "comestible"
@@ -137,7 +138,14 @@ Conclusion clave sobre los datos:
            Por ejemplo; la combinación: spore-print-color=k/n + cap-surface=t + stem-surface=y tiene una alta probabilidad de ser venenosa (p)
            ''')
 
-tab1.write("2. Graficos simples y descubrimientos sobre el EDA")
+tab1.write("2. Graficos sobre los datos")
+with tab1:
+   st.image("./images/output.png", use_column_width = 'auto', caption ="Proporcion de comestibles y no comestibles")
+with tab1:
+   st.image("./images/output_vars.png", use_column_width = 'auto', caption ="Comestibilidad segun atributos")
+with tab1:
+   st.image("./images/output_rf_impor.png", use_column_width = 'auto', caption ="")   
+
 
 
 tab2.write("MODELOS DE MACHINE LEARNING")
@@ -164,11 +172,13 @@ tab2.write('''
            de características en cada división del árbol. La predicción final del modelo se obtiene tomando la mayoría de los votos (en el caso de la clasificación). 
             ''')        
 with tab2:
-   st.image("./images/output_.png", use_column_width = 'auto')
+   st.image("./images/rf_trees.png", use_column_width = 'auto')
 tab2.write(''' 
            MODELO 3: K-NEAREST NEIGHBOURS: el algoritmo asigna una clase a un dato nuevo basándose en la clase más frecuente 
            entre sus k vecinos más cercanos en el espacio de características, donde k es un número entero predefinido.
         ''')
+with tab2:
+   st.image("./images/output_knn_cm.png", use_column_width = 'auto')
 
 
 tab3.write("3. Reflexiones y dificultades")
