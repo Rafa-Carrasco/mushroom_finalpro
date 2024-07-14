@@ -3,7 +3,7 @@
 base = "light"
 
 # Colores del tema
-primaryColor = "#ffffff"
+primaryColor = "#1f77b4"
 backgroundColor = "#9BADA9"
 secondaryBackgroundColor = "#4C6B6C"
 textColor = "#000000"

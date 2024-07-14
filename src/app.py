@@ -96,10 +96,9 @@ with st.container(border=True):
 with st.container():
         st.write("Esperamos que esta guía te sea de ayuda. ¡Disfruta usando el clasificador de setas!")
 
+st.divider()
 
-st.write("Insertar todos los parametros y pulsar el boton para hacer la predicción")
-if st.button("Predecir"):
-
+if st.button("PREDECIR"):
   
     prediction = str(model.predict([[cap_d, stem_h, stem_w, cap_shape_enc, gill_color_enc, stem_surface_enc, stem_color_enc, veil_color_enc, spore_print_color_enc, season_enc ]])[0])
     pred_class = class_dict[prediction]
@@ -153,30 +152,39 @@ with tab1:
 tab2.write("MODELOS DE MACHINE LEARNING")
 tab2.write('''
            Como comentamos al principio, nuestro sistema de clasificación estaría basado en los atributos de las setas visibles a simple vista.
-Elegir el modelo adecuado y ajustar sus hiper parámetros son pasos críticos en cualquier proyecto de aprendizaje automático. 
-Después del EDA sabemos que nuestros datos tienen distribuciones asimétricas, con valores atípicos y extremos, mucha variabilidad entre atributos, 
+Elegir el modelo adecuado y ajustar sus hiper parámetros son pasos críticos en cualquier proyecto de aprendizaje automático.
+           ''') 
+tab2.write(''' 
+           Después del EDA sabemos que nuestros datos tienen distribuciones asimétricas, con valores atípicos y extremos, mucha variabilidad entre atributos, 
            y muchos valores faltantes. Esto nos sirve como indicación para saber qué algoritmo puede dar los resultados más óptimos. 
-En este proyecto, varios algoritmos de ML han sido testados. 
-El uso de un árbol de decisión ha sido correcto como primera opción, pero comparar y mejorar el resultado 
+En este proyecto, varios algoritmos de ML han sido testados.
+           ''') 
+tab2.write(''' 
+           El uso de un árbol de decisión ha sido correcto como primera opción, pero comparar y mejorar el resultado 
            con otros modelos como RFs y KNN ha sido esencial para confirmar las validez de sus predicciones
         ''')
+tab2.write("MODELO 1: DECISION TREE:")
 tab2.write(''' 
-        MODELO 1: DECISION TREE: organiza decisiones y sus posibles consecuencias en una estructura de árbol. 
+           Organiza decisiones y sus posibles consecuencias en una estructura de árbol. 
            Cada nodo interno representa una prueba en una característica (por ejemplo, si una característica es menor o mayor que un valor específico), 
            cada rama representa el resultado de la prueba, y cada nodo hoja representa una etiqueta de clase (para clasificación) o un valor continuo (para regresión). 
            El camino desde la raíz del árbol hasta una hoja representa una serie de decisiones que conducen a una predicción.
            ''')
 with tab2:
    st.image("./images/output_dt.png", use_column_width = 'auto')
+
+tab2.write("MODELO 2: RANDOM FOREST:")
 tab2.write(''' 
-           MODELO 2: RANDOM FOREST: Se basa en la construcción de múltiples árboles de decisión durante el entrenamiento y su combinación para mejorar la precisión 
+           Se basa en la construcción de múltiples árboles de decisión durante el entrenamiento y su combinación para mejorar la precisión 
            y controlar el sobreajuste. Cada árbol en el bosque se entrena con una muestra diferente del conjunto de datos y se utiliza un subconjunto aleatorio 
            de características en cada división del árbol. La predicción final del modelo se obtiene tomando la mayoría de los votos (en el caso de la clasificación). 
             ''')        
 with tab2:
    st.image("./images/rf_trees.png", use_column_width = 'auto')
+
+tab2.write("MODELO 3: K-NEAREST NEIGHBOURS:")
 tab2.write(''' 
-           MODELO 3: K-NEAREST NEIGHBOURS: el algoritmo asigna una clase a un dato nuevo basándose en la clase más frecuente 
+           El algoritmo asigna una clase a un dato nuevo basándose en la clase más frecuente 
            entre sus k vecinos más cercanos en el espacio de características, donde k es un número entero predefinido.
         ''')
 with tab2:
@@ -193,8 +201,9 @@ tab3.write("5. Ética y responsabilidad: Dado que este modelo puede tener implic
 tab3.write("6. Mejoras futuras: Siempre hay espacio para mejorar un proyecto. Se podría considerar la expansión del conjunto de datos, explorar técnicas más avanzadas de modelado como el ensamblaje de modelos o incluso aplicar técnicas de explicabilidad del modelo (como visualizacion de los arboles de decision, SHAP, LIME, PDP), para entender mejor las decisiones del mismo.")
 tab3.write("En resumen, trabajar en un proyecto como este no solo implica desarrollar habilidades técnicas en aprendizaje automático, sino también ser consciente del contexto y las implicaciones prácticas de los resultados.")
 
+with tab2:
+   st.image("./images/logo2_sm.jpg", use_column_width = 'auto')
 
-# st.image('./images/seta3.jpg')
 
 
    
