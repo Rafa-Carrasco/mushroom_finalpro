@@ -116,7 +116,6 @@ tab1.write("1. Sobre los datos: problemas iniciales")
 tab1.write('''
  - Variabilidad: Todas las variables muestran una variabilidad considerable, con desviaciones estándar altas en comparación con sus medias. 
            Esto sugiere que las características físicas de los hongos en el conjunto de datos varían ampliamente.
- - Valores Extremos: La presencia de valores mínimos de 0 en stem-height y stem-width podría indicar errores en los datos o valores faltantes. 
  - Distribución Asimétrica: Las diferencias significativas entre las medianas y las medias, especialmente en stem-width, 
            sugieren que la distribución de los datos podría tener valores atípicos.
 Este análisis descriptivo nos da una base para entender la distribución y las características de las variables en el dataset de setas. 
@@ -201,8 +200,8 @@ tab3.write("5. Ética y responsabilidad: Dado que este modelo puede tener implic
 tab3.write("6. Mejoras futuras: Siempre hay espacio para mejorar un proyecto. Se podría considerar la expansión del conjunto de datos, explorar técnicas más avanzadas de modelado como el ensamblaje de modelos o incluso aplicar técnicas de explicabilidad del modelo (como visualizacion de los arboles de decision, SHAP, LIME, PDP), para entender mejor las decisiones del mismo.")
 tab3.write("En resumen, trabajar en un proyecto como este no solo implica desarrollar habilidades técnicas en aprendizaje automático, sino también ser consciente del contexto y las implicaciones prácticas de los resultados.")
 
-with tab2:
-   st.image("./images/logo2_sm.jpg", use_column_width = 'auto')
+with tab3:
+   st.image("./images/logo2.jpg", use_column_width = 'auto')
 
 
 
