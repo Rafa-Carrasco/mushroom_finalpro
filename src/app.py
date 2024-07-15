@@ -112,11 +112,18 @@ st.divider()
   
 tab1, tab2, tab3 = st.tabs(["Sobre los datos y el EDA", "Modelos de ML", "Reflexiones y dificultades"])
 
-tab1.write("1. Sobre los datos: problemas iniciales")
+tab1.write("1. Sobre los datos")
 tab1.write('''
- - Variabilidad: Todas las variables muestran una variabilidad considerable, con desviaciones estándar altas en comparación con sus medias. 
+            El dataset original ha sido descargado de https://mushroom.mathematik.uni-marburg.de/ 
+           y creado por Dennis Wagner , Dominik Heider y Georges Hattab 
+            La informacion del dataset ha sido extraida mediante tecnicads de procesamiento del lenguaje natural 
+           del libro de Patrick Hardin. "Mushrooms & Toadstools. Collins, 2012"
+           ''')
+tab1.write('''
+           Los datos muestran: 
+ - Gran variabilidad: Todas las variables muestran una variabilidad considerable, con desviaciones estándar altas en comparación con sus medias. 
            Esto sugiere que las características físicas de los hongos en el conjunto de datos varían ampliamente.
- - Distribución Asimétrica: Las diferencias significativas entre las medianas y las medias, especialmente en stem-width, 
+ - Distribución asimétrica: Las diferencias significativas entre las medianas y las medias, especialmente en stem-width, 
            sugieren que la distribución de los datos podría tener valores atípicos.
 Este análisis descriptivo nos da una base para entender la distribución y las características de las variables en el dataset de setas. 
            Es un primer paso crucial antes de proceder con análisis más complejos o modelos predictivos.           
@@ -191,14 +198,48 @@ with tab2:
 
 
 tab3.write("3. Reflexiones y dificultades")
-tab3.write("La reflexion despues de un proyecto es siempre muy enriquecedora. La metacognición (análisis del proceso de aprendizaje) es un proceso clave que aporta enormemente al aprendizaje. Algunos puntos para reflexionar son:")
-tab3.write("1. Importancia del dominio del problema: Trabajar con datos relacionados con la alimentación y la salud pública requiere un entendimiento profundo del dominio. Es crucial asegurarse de tener información precisa y actualizada sobre las características de las setas y los riesgos asociados. En este caso, los datos vienen con la garantia de un equipo de investigadores de la UCI")
-tab3.write("2. Preprocesamiento de datos: En este proyecto, el preprocesamiento de datos juega un papel crucial, especialmente en la limpieza de datos y la codificación de variables categóricas. Asegurarse de que los datos estén correctamente preparados y que las transformaciones como el encoding se realicen de manera adecuada es fundamental para el rendimiento del modelo.")
-tab3.write("3. Selección y ajuste de modelo: Elegir el modelo adecuado y ajustar sus hiperparámetros son pasos críticos en cualquier proyecto de aprendizaje automático. En este proyecto, Naibe Bayes parecia la mejor solucion pero los reultados de la prueba han sido contundentes en su contra. El uso de un árbol de decisión ha sido una opción válida, pero comparar el resultado con otros modelos como RFs ha sido esencial para confirmar las validez de sus predicciones")
-tab3.write("4. Interpretación de resultados: Interpretar los resultados del modelo es clave para entender su eficacia y posibles áreas de mejora. Esto incluye analizar métricas de rendimiento como precisión, recall y la matriz de confusión, así como explorar errores comunes cometidos por el modelo.")
-tab3.write("5. Ética y responsabilidad: Dado que este modelo puede tener implicaciones directas en la salud y seguridad de las personas, es fundamental abordar cuestiones éticas y de responsabilidad. Esto incluye la transparencia en la interpretación de resultados, así como la educación sobre las limitaciones del modelo y la importancia de la consulta con expertos en setas antes de tomar decisiones basadas en predicciones.")
-tab3.write("6. Mejoras futuras: Siempre hay espacio para mejorar un proyecto. Se podría considerar la expansión del conjunto de datos, explorar técnicas más avanzadas de modelado como el ensamblaje de modelos o incluso aplicar técnicas de explicabilidad del modelo (como visualizacion de los arboles de decision, SHAP, LIME, PDP), para entender mejor las decisiones del mismo.")
-tab3.write("En resumen, trabajar en un proyecto como este no solo implica desarrollar habilidades técnicas en aprendizaje automático, sino también ser consciente del contexto y las implicaciones prácticas de los resultados.")
+tab3.write('''
+           La reflexion despues de un proyecto es siempre muy enriquecedora. La metacognición (análisis del proceso de aprendizaje) 
+           es un proceso clave que aporta enormemente al aprendizaje. Algunos puntos para reflexionar son:
+           ''')
+tab3.write('''
+           1. Importancia del dominio del problema: Trabajar con datos relacionados con la alimentación y la salud pública 
+           requiere un entendimiento profundo del dominio. Es crucial asegurarse de tener información precisa y actualizada 
+           sobre las características de las setas y los riesgos asociados. 
+           En este caso, los datos vienen con la garantia de un equipo de investigadores de la Universidad de Marburg, en Alemania
+           ''')
+tab3.write('''
+           2. Preprocesamiento de datos: En este proyecto, el preprocesamiento de datos juega un papel crucial, 
+           especialmente en la limpieza de datos y la codificación de variables categóricas. 
+           Asegurarse de que los datos estén correctamente preparados y que las transformaciones como el encoding 
+           se realicen de manera adecuada es fundamental para el rendimiento del modelo.
+           ''')        
+tab3.write('''
+            3. Selección y ajuste de modelo: Elegir el modelo adecuado y ajustar sus hiperparámetros son pasos críticos 
+            en cualquier proyecto de aprendizaje automático. En este proyecto, Decision Tree era una excelente opcion inicial, 
+            pero es un modelo que puede tener problemas de sobrejauste. Mejorar sus resultados y compararlos con otros modelo como KNN 
+            ha sido esencial para confirmar las validez de sus predicciones
+            ''')
+tab3.write('''
+            4. Interpretación de resultados: Interpretar los resultados del modelo es clave para entender su eficacia y 
+            posibles áreas de mejora. Esto incluye analizar métricas de rendimiento como precisión, recall y la matriz de confusión, 
+            así como explorar errores comunes cometidos por el modelo.
+            ''')
+tab3.write('''
+           5. Ética y responsabilidad: Dado que este modelo puede tener implicaciones directas en la salud y seguridad de las personas, 
+           es fundamental abordar cuestiones éticas y de responsabilidad. Esto incluye la transparencia en la interpretación de resultados, 
+           así como la educación sobre las limitaciones del modelo y la importancia de la consulta con expertos en setas antes 
+           de tomar decisiones basadas en predicciones.
+           ''')
+tab3.write('''
+           6. Mejoras futuras: Siempre hay espacio para mejorar un proyecto. Se podría considerar la expansión del conjunto de datos, 
+           explorar técnicas más avanzadas de modelado como el ensamblaje de modelos o incluso aplicar técnicas de explicabilidad del modelo 
+           (como SHAP, LIME, PDP), para entender mejor las decisiones del mismo.
+           ''')
+tab3.write('''
+           En resumen, trabajar en un proyecto como este no solo implica desarrollar habilidades técnicas en aprendizaje automático, 
+           sino también ser consciente del contexto y las implicaciones prácticas de los resultados.
+           ''')
 
 with tab3:
    st.image("./images/logo2.jpg", use_column_width = 'auto')
