@@ -114,7 +114,7 @@ tab1, tab2, tab3 = st.tabs(["Sobre los datos y el EDA", "Modelos de ML", "Reflex
 
 tab1.write("1. Sobre los datos")
 tab1.write('''
-            El dataset original ha sido descargado de https://mushroom.mathematik.uni-marburg.de/ 
+            El dataset original ha sido descargado de la web mushroom.mathematik.uni-marburg.de 
            y creado por Dennis Wagner , Dominik Heider y Georges Hattab 
             La informacion del dataset ha sido extraida mediante tecnicads de procesamiento del lenguaje natural 
            del libro de Patrick Hardin. "Mushrooms & Toadstools. Collins, 2012"
