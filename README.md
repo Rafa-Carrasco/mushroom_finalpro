@@ -1,3 +1,5 @@
+(version española en readme.es.md
+
 # DATASETAS
 
 DATASETAS is a mushroom classifier based on edibility.
